@@ -29,8 +29,28 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
+const allowedOrigins = [
+  'http://localhost:5173', // local frontend (vite)
+  'http://localhost:3000', // local frontend (react/next)
+  'http://localhost:5500',
+  'https://roboxplore2026.vercel.app/', // production frontend
+]
+
+
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true) // allow Postman / server requests
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
+  })
+)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
