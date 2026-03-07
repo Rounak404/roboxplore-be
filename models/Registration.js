@@ -16,6 +16,16 @@ const memberSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  contactNo: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 })
 
 const registrationSchema = new mongoose.Schema({
@@ -40,6 +50,18 @@ const registrationSchema = new mongoose.Schema({
       type: String,
       required: true,
       unique: true,
+      trim: true,
+    },
+    contactNo: {
+      type: String,
+      required: true,
+      unique:true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique:true,
       trim: true,
     },
   },

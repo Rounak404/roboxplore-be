@@ -104,7 +104,6 @@ export const createRegistration = async (req, res) => {
         message: 'Payment screenshot is required',
       })
     }
-
     const registration = new Registration({
       teamName: req.body.teamName,
 
@@ -112,6 +111,8 @@ export const createRegistration = async (req, res) => {
         name: req.body.leaderName,
         branch: req.body.leaderBranch,
         regdNo: req.body.leaderRegdNo,
+        contactNo: req.body.leaderContactNo,
+        email: req.body.leaderEmail,
       },
 
       members: {
@@ -119,18 +120,24 @@ export const createRegistration = async (req, res) => {
           name: req.body.member2Name,
           branch: req.body.member2Branch,
           regdNo: req.body.member2RegdNo,
+          contactNo: req.body.member2ContactNo,
+          email: req.body.member2Email,
         },
 
         member3: {
           name: req.body.member3Name,
           branch: req.body.member3Branch,
           regdNo: req.body.member3RegdNo,
+          contactNo: req.body.member3ContactNo,
+          email: req.body.member3Email,
         },
 
         member4: {
           name: req.body.member4Name,
           branch: req.body.member4Branch,
           regdNo: req.body.member4RegdNo,
+          contactNo: req.body.member4ContactNo,
+          email: req.body.member4Email,
         },
 
         member5: req.body.member5Name
@@ -138,6 +145,8 @@ export const createRegistration = async (req, res) => {
               name: req.body.member5Name,
               branch: req.body.member5Branch,
               regdNo: req.body.member5RegdNo,
+              contactNo: req.body.member5ContactNo,
+              email: req.body.member5Email,
             }
           : undefined,
       },
@@ -164,10 +173,10 @@ export const createRegistration = async (req, res) => {
 
     // Handle specific error types
     if (error.code === 11000) {
-        return res.status(400).json({
-          success: false,
-          message: 'Leader registration number already exists.',
-        })
+      return res.status(400).json({
+        success: false,
+        message: 'Leader registration number already exists.',
+      })
     }
     if (error && error.message) {
       if (error.message.includes('Invalid file type')) {

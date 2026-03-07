@@ -22,6 +22,14 @@ export const registrationSchema = z.object({
     .max(20)
     .trim(),
 
+  leaderContactNo: z
+    .string()
+    .min(10, 'Leader contact number must be at least 10 digits')
+    .max(15)
+    .trim(),
+
+  leaderEmail: z.string().trim().email('Invalid leader email'),
+
   // MEMBER 2
   member2Name: z
     .string()
@@ -45,6 +53,10 @@ export const registrationSchema = z.object({
     .max(20)
     .trim(),
 
+  member2ContactNo: z.string().min(10).max(15).trim(),
+
+  member2Email: z.string().trim().email(),
+
   // MEMBER 3
   member3Name: z
     .string()
@@ -59,6 +71,10 @@ export const registrationSchema = z.object({
   member3Branch: z.string().min(2).max(50).trim(),
 
   member3RegdNo: z.string().min(5).max(20).trim(),
+
+  member3ContactNo: z.string().min(10).max(15).trim(),
+
+  member3Email: z.string().trim().email(),
 
   // MEMBER 4
   member4Name: z
@@ -75,6 +91,10 @@ export const registrationSchema = z.object({
 
   member4RegdNo: z.string().min(5).max(20).trim(),
 
+  member4ContactNo: z.string().min(10).max(15).trim(),
+
+  member4Email: z.string().trim().email(),
+
   // MEMBER 5
   member4Name: z
     .string()
@@ -89,6 +109,10 @@ export const registrationSchema = z.object({
   member4Branch: z.string().min(2).max(50).trim(),
 
   member4RegdNo: z.string().min(5).max(20).trim(),
+
+  member5ContactNo: z.string().min(10).max(15).trim(),
+
+  member5Email: z.string().trim().email(),
 })
 
 export const validateRegistration = (data) => {
